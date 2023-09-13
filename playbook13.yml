@@ -1,0 +1,20 @@
+---
+- name: implementing tags
+  hosts: all
+  tasks:
+    - name: create user
+      user:
+        name: mahe
+        password: 1234
+      tags: user_creation
+    - name: install tree
+      apt:
+        name: tree
+        state: present
+        update_cache: no
+      tags: tree_installation
+    - name: copy file
+      copy:
+        src: /etc/passwd
+        dest: /tmp
+...   
